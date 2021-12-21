@@ -1,0 +1,13 @@
+form {
+    margin: auto;
+    border: 1px solid green;
+    padding: 20px ;
+    width: 40%;
+    margin-top: 30px;
+}
+
+#Link{
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    color: red
+}
