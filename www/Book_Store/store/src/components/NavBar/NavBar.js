@@ -18,7 +18,12 @@ export default function NavBar() {
     textDecoration: "none",
     padding: "7px",
   };
+  const isLogin = localStorage.getItem('token')
+  const handleLogOut = ()=>{
+    localStorage.removeItem('token')
+  }
 
+  
   return (
     <div>
       <Navbar
@@ -35,12 +40,24 @@ export default function NavBar() {
           Book Store
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        {isLogin ? (
         <Link to="/contact" style={linkStyle}>
           CONTACT US
         </Link>
-        <Link to="/contact" style={linkStyle}>
-          HOW ARE
+        ):(
+          <Link to="/register" style={linkStyle}>
+          CONTACT US
         </Link>
+        )}
+        {isLogin ? (
+        <Link to="/whoare" style={linkStyle}>
+          WHO ARE
+        </Link>
+        ):(
+          <Link to="/register" style={linkStyle}>
+          WHO ARE
+        </Link>
+        )}
         <NavDropdown title="Graduate Studies">
           <NavDropdown.Item>Literature and political science</NavDropdown.Item>
           <NavDropdown.Item>management and economy</NavDropdown.Item>
@@ -70,6 +87,13 @@ export default function NavBar() {
             </div>
             <FontAwesomeIcon icon={faShoppingCart} />
           </div>
+          {isLogin ? (
+            <NavDropdown title = 'log out' className='px-2'>
+              <LinkContainer to="/login">
+              <NavDropdown.Item onClick={handleLogOut}>log out</NavDropdown.Item>
+            </LinkContainer>
+            </NavDropdown>
+          ):(
           <NavDropdown title="sign in" className="px-2">
             <LinkContainer to="/login">
               <NavDropdown.Item>Login</NavDropdown.Item>
@@ -78,6 +102,7 @@ export default function NavBar() {
               <NavDropdown.Item>register</NavDropdown.Item>
             </LinkContainer>
           </NavDropdown>
+          )}
         </div>
       </Navbar>
     </div>

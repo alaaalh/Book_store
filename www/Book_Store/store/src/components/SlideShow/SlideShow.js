@@ -5,6 +5,7 @@ import ImageTwo from "../../assets/images/2.jpg"
 import ImageThree from "../../assets/images/3.jpg"
 
 export default function SlideShow() {
+
   return (
     <div style={{marginTop: "55px"}}>
       <Carousel>

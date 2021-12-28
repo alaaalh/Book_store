@@ -15,28 +15,26 @@ import "./MainPadge.css"
 export default function MainPadge() {
   const [books, setBooks] = useState([{}]);
   const [offset , setOffset] = useState(0)
-  const [parPadge] = useState(20)
+  const [parPadge] = useState(12)
   const [padgeCount , setPadgeCount] = useState(0)
 
 
-  const handlePageClick = (e) => {
-    const selectedPage = e.selected;
-    setOffset(selectedPage + 1)
-};
-
+  
   useEffect(() => {
     axiosInstance
     .get(`/books`)
     .then((response) => {
-      // console.log(response)
         const slice = response.data.slice(offset , offset + parPadge)
         setBooks(slice);
         setPadgeCount(Math.ceil(response.data.length / parPadge))
-        console.log(response.data.length)
       })
       .catch((err) => console.log(err));
-  }, [offset]);
-
+    }, [offset , parPadge]);
+    
+    const handlePageClick = (e) => {
+      const selectedPage = e.selected;
+      setOffset(selectedPage + parPadge)
+  };
   const getCarts = useSelector(state => state.carts.currentGoots)
   const dispatch = useDispatch()
 

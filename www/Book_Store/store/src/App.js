@@ -1,28 +1,30 @@
 import "./App.css";
-import NavBar from "./components/NavBar/NavBar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import LoginPadge from "./padges/LoginPadge/LoginPadge";
 import RegisterPadge from "./padges/RegisterPadge/RegisterPadge";
-import React from "react";
+import React, { Suspense} from "react";
 import MainPadge from "./padges/MainPadge/MainPadge";
-import Contact from "./padges/Contact/Contact";
-import HowAre from './padges/HowAre/HowAre';
-
+// import Contact from "./padges/Contact/Contact";
+// import HowAre from "./padges/HowAre/HowAre";
+const HowAre = React.lazy(() => import("./padges/HowAre/HowAre"));
+const Contact = React.lazy(() => import("./padges/Contact/Contact"));
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <MainPadge/>
-        <Routes>
-          <Route path="/login" element={<LoginPadge />} />
-          <Route path='/register' element={<RegisterPadge/>}/>
-          <Route path='/contact' element={<Contact/>}/>
-          <Route path='/howare' element={<HowAre/>}/>
-        </Routes>
-      </BrowserRouter>
+      <Suspense fallback={<div>Loading...</div>}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" exact element={<MainPadge />} />
+            <Route path="/login" exact element={<LoginPadge />} />
+            <Route path="/register" exact element={<RegisterPadge />} />
+            <Route path="/contact" exact element={<Contact />} />
+            <Route path="/whoare" exact element={<HowAre />} />
+          </Routes>
+        </BrowserRouter>
+      </Suspense>
     </>
   );
 }
