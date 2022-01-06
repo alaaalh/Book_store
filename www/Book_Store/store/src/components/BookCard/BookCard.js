@@ -2,11 +2,15 @@ import React from "react";
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import StarRatings from 'react-star-ratings';
+import { Link } from "react-router-dom";
+
 
 export default function BookCard(prop) {
-    const src = `http://localhost:8080/api/books/${prop.book._id}/avatar`
+    const src = `http://localhost:8080/api/books/${prop.book._id}/avatar`;
+    
   return (
     <Card style={{ width: "18rem" }}>
+    <Link to={`/books/${prop.book._id}`}>
       <Card.Img variant="top" src={src} />
       <Card.Body>
         <Card.Title >{prop.book.author}</Card.Title>
@@ -22,6 +26,7 @@ export default function BookCard(prop) {
         <Card.Title className="p-3">price = {prop.book.price}$</Card.Title>
         <Button variant="success" className="btn btn-success " onClick={prop.handleClick}>ADD TO CART</Button>
       </Card.Body>
+      </Link>
     </Card>
   );
 }

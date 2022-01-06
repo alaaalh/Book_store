@@ -14,13 +14,14 @@ export const getMovies = () => {
 };
 
 
-export const getMoviesDetails = (id) => {
+export const getMoviesDetails = (_id) => {
     return (dispatch) =>{
-        axiosInstance.get(`/books/${id}`).then(response => {
+        axiosInstance.get(`/books/${_id}`).then(response => {
             dispatch({
                 type: GET_MOVIES_DETAILS,
                 payload: response.data
             })
-        })
+            console.log(response)
+        }).catch(err=>console.log(err))
     }
 }

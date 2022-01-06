@@ -61,7 +61,7 @@ router.get('/:id/avatar', async(req, res)=>{
     }
 })
 
-router.get('/:id', auth, async (req, res) => {
+router.get('/:id', async (req, res) => {
     const { id } = req.params
     try {
         const book = await Book.findOne({ _id: id }, { avatar: 0 })
