@@ -20,7 +20,7 @@ export default function BookCard(prop) {
           starSpacing="15px"
         />
         <Card.Title className="p-3">price = {prop.book.price}$</Card.Title>
-        <Button variant="success" onClick={prop.handleClick}>ADD TO CART</Button>
+        <Button variant="success" className="btn btn-success " onClick={prop.handleClick}>ADD TO CART</Button>
       </Card.Body>
     </Card>
   );

@@ -6,10 +6,10 @@ import LoginPadge from "./padges/LoginPadge/LoginPadge";
 import RegisterPadge from "./padges/RegisterPadge/RegisterPadge";
 import React, { Suspense} from "react";
 import MainPadge from "./padges/MainPadge/MainPadge";
-// import Contact from "./padges/Contact/Contact";
-// import HowAre from "./padges/HowAre/HowAre";
 const HowAre = React.lazy(() => import("./padges/HowAre/HowAre"));
 const Contact = React.lazy(() => import("./padges/Contact/Contact"));
+// npm install --save redux react-redux
+
 
 function App() {
   return (

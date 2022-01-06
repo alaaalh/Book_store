@@ -2,8 +2,6 @@ import React from "react";
 import Register from "../../components/Register/Register";
 import { useState } from "react";
 import { axiosInstance } from "../../axios/config";
-import NavBar from "../../components/NavBar/NavBar";
-import { Link } from 'react-router-dom';
 
 const regex = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/;
 export default function RegisterPadge() {

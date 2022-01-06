@@ -2,7 +2,6 @@ import React from "react";
 import Login from "../../components/Login/Login";
 import { useState } from "react";
 import { axiosInstance } from '../../axios/config';
-import NavBar from "../../components/NavBar/NavBar";
 
 export default function LoginPadge() {
   const [data, setData] = useState({
